@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { assets } from '../assets/assets'
-
+import { motion } from 'motion/react';
 const Result = () => {
  const[image,setImage ]=useState(assets.sample_img_1);
  const[isImageLoaded, setisImageLoaded]=useState(false);
@@ -11,11 +11,19 @@ const onSubmitHandler=async(e)=>{
 }
 
   return (
-    <form onSubmit={onSubmitHandler}  className='flex flex-col min-h-[90vh] justify-center items-center '  action="">
+    <motion.form 
+
+    initial={{ opacity: 0.2, y:100 }}
+    transition={{duration:1}}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{once:true}}
+    
+    
+    onSubmit={onSubmitHandler}  className='flex flex-col min-h-[90vh] justify-center items-center '  action="">
     <div>
       
       <div className='relative '>
-        <img src={image} alt="" className='maax-w-sm rounded'/>
+        <img src={image} alt="" className='max-w-sm rounded'/>
          <span  className={`absolute bottom-0 left-0 h-1 bg-blue-600 ${loading? 'w-fll transition-all duration-[10s]': 'w-0'}`}/>
 
       </div>
@@ -41,7 +49,7 @@ const onSubmitHandler=async(e)=>{
     </div>
 
 }
-    </form>
+    </motion.form>
 
   )
 }
