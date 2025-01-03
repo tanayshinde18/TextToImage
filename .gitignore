@@ -1,0 +1,62 @@
+# Node modules (client and server)
+client/node_modules/
+server/node_modules/
+node_modules/
+
+# Build directories (client and server)
+client/build/
+client/dist/
+server/build/
+server/dist/
+
+# Environment files (client and server)
+client/.env
+server/.env
+.env
+
+# Logs (common)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Cache and temporary files
+client/.cache/
+server/.cache/
+.tmp/
+*.tmp
+*.swp
+
+# Testing coverage
+client/coverage/
+server/coverage/
+coverage/
+
+# OS and system files
+.DS_Store
+Thumbs.db
+
+# Public assets (client-specific)
+client/public/build/
+
+# IDE-specific files
+.vscode/
+.idea/
+*.iml
+
+# Debugging and error files
+debug.log
+error.log
+
+# Linting cache
+client/.eslintcache
+server/.eslintcache
+.eslintcache
+
+# Babel
+*.babelrc
+*.babelcache.json
+
+# Yarn and NPM lock files (optional)
+/.yarn-integrity
+.pnpm-debug.log
