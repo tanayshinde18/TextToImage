@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Login from "./components/Login";
 import { AppContext } from "./context/AppContext";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 const App = () => {
   const{showLogin}=useContext(AppContext); 
   return (
@@ -16,6 +18,7 @@ const App = () => {
    
     "
     >
+      <ToastContainer position="bottom-right" />
       <Navbar />
      {showLogin && <Login/>}
       <Routes>

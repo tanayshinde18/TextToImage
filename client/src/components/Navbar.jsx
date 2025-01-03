@@ -7,7 +7,7 @@ const Navbar = () => {
   
   const navigate = useNavigate();
 
-  const {user, setShowLogin }=useContext(AppContext)
+  const {user, setShowLogin,logout,credit }=useContext(AppContext)
 
   return (
     <div className="flex items-center justify-between py-4">
@@ -20,9 +20,9 @@ const Navbar = () => {
 
             <button onClick={()=>navigate('/buy')} className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-1.5 sm:py-3 rounded-full hover:scale-105 transition-all duration-700">
               <img className="w-5" src={assets.credit_star} alt="" />
-              <p className="test-xs sm:text-sm font-medium text-gray-800">Credits left:69 </p>
+              <p className="test-xs sm:text-sm font-medium text-gray-800">Credits left:{credit} </p>
             </button>
-            <p className=" text-gray-600 max-sm:hidden pl-4">Hi, Username </p>
+            <p className=" text-gray-600 max-sm:hidden pl-4">Hi,{user.name} </p>
             <div className="realtive group">
               <img src={assets.profile_icon}
               className="w-10 drop-shadow" alt="" />
@@ -30,7 +30,7 @@ const Navbar = () => {
 
                 <ul className="list-none m-0 p-2 bg-white rounded-medium border texr-sm mt-3">
 
-                  <li className=" py-1 px-2 cursor-pointer ">Logout</li>
+                  <li onClick={logout} className=" py-1 px-2 cursor-pointer ">Logout</li>
                 </ul>
                 
                   </div>

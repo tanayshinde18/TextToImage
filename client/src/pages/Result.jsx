@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { assets } from '../assets/assets'
 import { motion } from 'motion/react';
+import { AppContext } from '../context/AppContext';
+
 const Result = () => {
  const[image,setImage ]=useState(assets.sample_img_1);
  const[isImageLoaded, setisImageLoaded]=useState(false);
  const[loading,setLoading]=useState(false);
 const[input,setInput]=useState('');
-const onSubmitHandler=async(e)=>{
 
+const {generateImage}=useContext(AppContext)
+const onSubmitHandler=async(e)=>{
+  e.preventDefault()
+  setLoading(true)
+  if(input){
+    const image = await generateImage(input);
+    if(image){
+      setisImageLoaded(true)
+      setImage(image)
+    }
+  }
+  setLoading(false)
 }
 
   return (
@@ -19,15 +32,28 @@ const onSubmitHandler=async(e)=>{
     viewport={{once:true}}
     
     
-    onSubmit={onSubmitHandler}  className='flex flex-col min-h-[90vh] justify-center items-center '  action="">
+    onSubmit={onSubmitHandler}  className='flex flex-col min-h-[80vh] justify-center items-center '  action="">
     <div>
       
-      <div className='relative '>
+      {/* <div className='relative '>
         <img src={image} alt="" className='max-w-sm rounded'/>
          <span  className={`absolute bottom-0 left-0 h-1 bg-blue-600 ${loading? 'w-fll transition-all duration-[10s]': 'w-0'}`}/>
 
       </div>
-      <p className={!loading? 'hidden':''}>Loading......</p>
+      <p className={!loading? 'hidden':''}>Loading......</p> */}
+
+
+
+<div className="relative">
+  <img src={image} alt="" className="max-w-sm rounded" />
+  <span
+    className="absolute bottom-0 left-0 h-1 bg-blue-600 transition-all duration-[10s]"
+    style={{
+      width: loading ? '100%' : '0%',
+    }}
+  />
+</div>
+<p className={!loading ? 'hidden' : ''}>Loading......</p>
 
       
     </div>
